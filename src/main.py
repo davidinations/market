@@ -1,48 +1,73 @@
-stockApel = 7
-stockJeruk = 7
-stockAnggur = 6
+# Program Lama
 
-while True:
-    nApel = int(input("Masukkan jumlah apel: "))
-    print(f'Masukkan jumlah apel : {nApel}')
-    if nApel >= 8:
-        print(f'Jumlah yang dimasukkan terlalu banyak. stock Apel Tinggal {stockApel}')
-        continue
-    else:
-        stockApel -= nApel
-        break
+# while True:
+#     nApel = int(input("Masukkan Jumlah Apel : "))
+#     print(f'Masukkan Jumlah Apel : {nApel}')
+#     if nApel >= stockApel:
+#         print(f'Jumlah yang dimasukkan terlalu banyak. stock Apel Tinggal {stockApel}')
+#         continue
+#     else:
+#         stockApel -= nApel
+#         break
+    
+# while True:
+#     nJeruk = int(input("Masukkan Jumlah Jeruk : "))
+#     print(f'Masukkan Jumlah Jeruk : {nJeruk}')
+#     if nJeruk >= stockJeruk:
+#         print(f'Jumlah yang dimasukkan terlalu banyak. stock Jeruk Tinggal {stockJeruk}')
+#         continue
+#     else:
+#         stockJeruk -= nJeruk
+#         break
 
-while True:
-    nJeruk = int(input("Masukkan jumlah jeruk: "))
-    print(f'Masukkan jumlah jeruk : {nJeruk}')
-    if nJeruk >= 8:
-        print(f'Jumlah yang dimasukkan terlalu banyak stock Jeruk Tinggal {stockJeruk}')
-        continue
-    else:
-        stockJeruk -= nJeruk
-        break
+# while True:
+#     nAnggur = int(input("Masukkan Jumlah Anggur : "))
+#     print(f'Masukkan Jumlah Anggur : {nAnggur}')
+#     if nAnggur >= stockAnggur:
+#         print(f'Jumlah yang dimasukkan terlalu banyak. stock Anggur Tinggal {stockAnggur}')
+#         continue
+#     else:
+#         stockAnggur -= nAnggur
+#         break
 
-while True:
-    nAnggur = int(input("Masukkan jumlah anggur: "))
-    print(f'Masukkan jumlah apel : {nAnggur}')
-    if nAnggur >= 7:
-        print(f'Jumlah yang dimasukkan terlalu banyak stock Anggur Tinggal {stockAnggur}')
-        continue
-    else:
-        stockAnggur -= nAnggur
-        break
 
-# Harga buah
+# Program Baru
+def input_fruit(name, stock, price):  
+    """
+    _Summary_
+
+    Args:
+        name (str): definisikan nama buah yang sesuai dengan variabel yang ada
+        stock (int): definisikan jumlah stok buah yang ada pada variabel stock
+        price (int): definisikan harga buah yang ada pada variabel price
+
+    Returns:
+        totalHargaPerBuah (int): mengembalikan total harga masing masing buah
+    """    
+    while True:
+        n = int(input(f"Masukkan Jumlah {name.capitalize()} : "))
+        if n >= stock:
+            print(f'Jumlah yang dimasukkan terlalu banyak. stock {name.capitalize()} Tinggal {stock}')
+            continue
+        else:
+            price = n * price
+            stock -= n
+            break
+    return price, n
+
+# Stock dan Harga
+stockApel = 10
+stockJeruk = 10
+stockAnggur = 10
+
 priceApel = 10000
 priceJeruk = 15000
 priceAnggur = 20000
 
-# Total buah
-totalPriceApel = nApel * priceApel
-totalPriceJeruk = nJeruk * priceJeruk
-totalPriceAnggur = nAnggur * priceAnggur
-
-# Total harga
+# Total harga masing masing buah dan keseluruhan buah
+totalPriceApel, nApel = input_fruit('apel', stockApel, priceApel)
+totalPriceJeruk, nJeruk = input_fruit('jeruk', stockJeruk, priceJeruk)
+totalPriceAnggur, nAnggur = input_fruit('anggur', stockAnggur, priceAnggur)
 totalPriceOverall = totalPriceApel + totalPriceJeruk + totalPriceAnggur
 
 # Output
